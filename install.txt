@@ -1,0 +1,85 @@
+# version 1.0.0.1 (build date 2019-02-01 00:45:00)
+
+This plugin has been updated to be compatible with php 7.x by Ioannis Sofronis (jsofronis@gmail.com)
+
+# version 1.0.0.0 (build date 2010-12-29 00:45:00)
+
+ipflows - IP flows correlation and visualization plugin
+Copyright (c) 2011 Masaryk University
+Author: Michal Potfaj <140462@mail.muni.cz>
+
+
+Content of this file:
+   * Content
+   * Description
+   * License
+   * Installation
+
+
+Description:
+This NfSen plugin is used for correlation and visualization of IP flows in a computer
+network. The plugin was created as a part of a master thesis. Plugin needs nfdump,
+Perl, PHP and Graphviz for its work.
+
+
+License:
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+   * Redistributions of source code must retain the above copyright notice,
+     this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
+     and/or other materials provided with the distribution.
+   * Neither the name of Masaryk University nor the names of its contributors may be
+     used to endorse or promote products derived from this software without
+     specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  POSSIBILITY OF SUCH DAMAGE.
+
+
+Installation manual:
+The installation is the same as with other NfSen plugins.
+
+1. Necessary resources: NfSen, nfdump, Perl, PHP, Graphviz, Apache (or some other web server)
+2. Configure and install
+	nfdump tools	(http://nfdump.sourceforge.net)
+	NfSen		(http://nfsen.sourceforge.net)
+	Perl		(http://www.perl.org)
+	PHP		(http://www.php.net)
+	Graphviz	(http://www.graphviz.org)
+	Apache		(http://www.apache.org)
+3. Copy the backend dir content to NfSen $BACKEND_PLUGINDIR
+4. Copy the frontend dir content to NfSen $FRONTEND_PLUGINDIR
+5. Configure plugin in nfsen.conf - insert these lines to the config file:
+
+@plugins = (
+    # profile    # module
+        [ '*', 'ipflows' ],
+);
+%PluginConf = (
+        ipflows => {
+                max_lines => 100000, # Limit number of records to be processed by nfdump for each channel
+                time_difference => 3000, # Time difference (in ms) within the same flow among various channels
+                www_dir => '/nfsen', # output web server nfsen directory path (default /nfsen)
+        },
+);
+
+6. Allow web server to write to the $FRONTEND_PLUGINDIR/ipflows/tmp directory
+7. Set web server to AllowOverride controls what directives may be placed in .htaccess files:
+	AllowOverride All
+8. Do not forget to copy the .htaccess file from frontend dir to $FRONTEND_PLUGINDIR
+9. Edit this line
+	use lib qw (/data/nfsen/libexec);
+   in ipflows.pm and insert the correct path to NfSen libexec dir there. /data/nfsen/libexec if NfSen default.
+10. Start/Restart/Reload NfSen to get the plugin work.

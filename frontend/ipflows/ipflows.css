@@ -1,0 +1,86 @@
+/*Credits: Dynamic Drive CSS Library */
+/*URL: http://www.dynamicdrive.com/style/ */
+/* version 1.0.0.1 (build date 2019-02-01 00:45:00) */
+
+.lred {
+        COLOR: blue; TEXT-DECORATION: underline
+}.lred:visited {
+        COLOR: blue; TEXT-DECORATION: underline
+}.lred:hover {
+        COLOR: red; TEXT-DECORATION: underline
+}
+
+.shadetabs {
+	border-bottom: 1px solid gray; 
+	width: 95%; 
+	background-image: url(../../icons/shade.png);
+	background-repeat: repeat-x; 
+	/* width: 90%; width of menu. Uncomment to change to a specific width */
+	/* margin-bottom: 1em; */
+}
+
+.shadetabs ul {
+	padding: 3px 0;
+	margin-left: 10px;
+	margin-top: 1px;
+	margin-bottom: 0;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Verdana,sans-serif;
+	list-style-type: none;
+	text-align: left; /*set to left, center, or right to align the menu as desired*/
+}
+
+.shadetabs li {
+	display: inline;
+	margin: 0;
+}
+
+.shadetabs li a {
+	text-decoration: none;
+	padding: 3px 5px;
+	margin-right: 1px;
+	border: 1px solid #778;
+	color: #2d2b2b;
+	background: white url(../../icons/shade.png) top left repeat-x;
+}
+
+.shadetabs li a:visited {
+	color: #2d2b2b;
+	background-color: #FFFFFF;
+}
+
+.shadetabs li a:hover {
+	text-decoration: underline;
+/*	color: #2d2b2b;*/
+	color: red;
+	background-color: #FFFFFF;
+}
+
+.shadetabs li.selected {
+	position: relative;
+	top: 0px;
+}
+
+.shadetabs li.selected a { /*selected main tab style */
+	text-decoration: none;
+	padding: 3px 5px;
+	margin-right: 1px;
+	border: 1px solid #778;
+	color: #2d2b2b;
+	background: white url(../../icons/shadeactive.png) top left repeat-x;
+	border-bottom-color: white;
+}
+
+.shadetabs li.selected a:hover { /*selected main tab style */
+	text-decoration: none;
+}
+
+/* Text in the nevigator */
+.navigator {
+	text-decoration: none;
+	padding: 0px 5px;
+	color: #2d2b2b;
+	font-family: Verdana;
+	font-size: 12px;
+}
